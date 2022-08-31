@@ -41,9 +41,6 @@ public class Animal {
                 river.clearLoc(index);
                 river.addAnimal(this, index-1);
             }
-            else if(nextToMe == this) {
-                mult(index);
-            }
         }
         else if(choice <= 40) { //move right
             //Make sure I am not at the left end
@@ -56,19 +53,6 @@ public class Animal {
             if(nextToMe == null) {
                 river.clearLoc(index);
                 river.addAnimal(this, index+1);
-            }
-            else if(nextToMe == this) {
-                mult(index);
-            }
-        }
-    }
-
-    public void mult(int index) {
-        Animal a = new Animal();
-        for(int i=0; i < 100; i++) {
-            if(river.getAnimalAt(i) == null) {
-                River.addAnimal(a, i);
-                return;
             }
         }
     }
