@@ -58,8 +58,16 @@ public class Fish extends Animal {
         ArrayList<> eArray = emptyArray();
         if(eArray.size() < 1)
             return;
-        river.addAnimal(new Fish, eArray.get(0));
-        return;
+        boolean decide = false;
+        while(decide = false) {
+            int random = (int)(1 + Math.random() * 100);
+            for(int i=0; i < eArray.size(); i++) {
+                if(eArray.get(i) == random) {
+                    river.addAnimal(new Fish(), eArray.get(i));
+                    decide = true;
+                }        
+            }    
+        }    
     }    
     
     public ArrayList<> emptyArray() {
