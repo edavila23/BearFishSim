@@ -14,21 +14,4 @@ public class Bear extends Animal {
     public static void setRiver(River river) {
         Animal.river = river;
     }
-
-    /*
-    public void eat(int index) {
-        if(river.getAnimalAt(index-1).getSymbol().equals("F")) {
-            Bear b = new Bear();
-            river.clearLoc(index - 1);
-            river.clearLoc(index);
-            river.addAnimal(b, index - 1);
-        }
-        else if(river.getAnimalAt(index+1).getSymbol().equals("F")) {
-            Bear b = new Bear();
-            river.clearLoc(index + 1);
-            river.clearLoc(index);
-            river.addAnimal(b, index + 1);
-        }
-    }
-     */
 }
