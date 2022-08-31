@@ -32,6 +32,9 @@ public class Fish extends Animal {
                 river.clearLoc(index);
                 river.addAnimal(this, index-1);
             }
+            if(nextToMe == this) {
+                mult();
+            }    
         }
         else if(choice <= 40) { //move right
             //Make sure I am not at the left end
@@ -45,6 +48,26 @@ public class Fish extends Animal {
                 river.clearLoc(index);
                 river.addAnimal(this, index+1);
             }
+            if(nextToMe == this) {
+                mult();
+            }    
         }
     }
+    
+    public void mult() {
+        ArrayList<> eArray = emptyArray();
+        if(eArray.size() < 1)
+            return;
+        river.addAnimal(new Fish, eArray.get(0));
+        return;
+    }    
+    
+    public ArrayList<> emptyArray() {
+        ArrayList<int> avail = new ArrayList<>();
+        for(int i=0; i < 100; i++) {
+            if(river.getAnimalAt(i) == null)
+                avail.add(i);
+        }
+        return avail;
+    }    
 }
