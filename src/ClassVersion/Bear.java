@@ -14,4 +14,55 @@ public class Bear extends Animal {
     public static void setRiver(River river) {
         Animal.river = river;
     }
+    
+    public void act(int index) {
+        if(river == null)
+            throw new IllegalStateException("Cannot act = No river set for animals");
+
+        int choice = (int)(1 + Math.random() * 100);
+        if(choice <= 20) { //move left
+            //Make sure I am not at the left end
+            if(index == 0)
+                return; //exit, cannot move
+
+            //get the Animal next to me
+            Animal nextToMe = river.getAnimalAt(index-1);
+            //if the space is empty, move to it
+            if(nextToMe == null) {
+                river.clearLoc(index);
+                river.addAnimal(this, index-1);
+            }
+            else if(nextToMe != this) {
+                eatL(index);
+            }    
+        }
+        else if(choice <= 40) { //move right
+            //Make sure I am not at the left end
+            if(index == 99)
+                return; //exit, cannot move
+
+            //get the Animal next to me
+            Animal nextToMe = river.getAnimalAt(index+1);
+            //if the space is empty, move to it
+            if(nextToMe == null) {
+                river.clearLoc(index);
+                river.addAnimal(this, index+1);
+            }
+            else if(nextToMe != this) {
+                eatR(index);
+            }    
+        }
+    }
+    
+    public void eatR(index) {
+        river.clearLoc(index);
+        river.clearLoc(index+1);
+        river.addAnimal(new Bear(), index+1);
+    }    
+    
+    public void eatL(index) {
+        river.clearLoc(index);
+        river.clearLoc(index-1);
+        river.addAnimal(newBear(), index-1);
+    }    
 }
